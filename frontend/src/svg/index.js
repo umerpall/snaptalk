@@ -13,7 +13,7 @@ import Return from "./return";
 import ArrowDown1 from "./arrowDow1";
 import Plus from "./plus";
 import ArrowRight from "./arrowRight";
-import LiveVideo from "./liveVideo";
+import ChatFilled from "./ChatFilled";
 import Photo from "./photo";
 import Feeling from "./feeling";
 import Dots from "./dots";
@@ -21,6 +21,7 @@ import Public from "./public";
 import NewRoom from "./newRoom";
 import Home from "./home";
 import FriendsActive from "./friendsActive";
+import Chat from "./Chat";
 
 export {
   Logo,
@@ -38,7 +39,7 @@ export {
   ArrowDown1,
   Plus,
   ArrowRight,
-  LiveVideo,
+  ChatFilled,
   Photo,
   Feeling,
   Dots,
@@ -46,4 +47,5 @@ export {
   NewRoom,
   Home,
   FriendsActive,
+  Chat,
 };

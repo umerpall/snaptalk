@@ -32,17 +32,19 @@ a {
   /* #ffef00; */
   --green-color: #42b72a;
   --light-blue-color: #e7f3ff;
+  --light-yellow-color: #fff5dd;
   --border-color: #ccced2;
   --shadow-1: rgba(0, 0, 0, 0.2);
   --shadow-2: rgba(0, 0, 0, 0.1);
   --shadow-3: rgba(0, 0, 0, 0.3);
   --shadow-inset: rgba(255, 255, 255, 0.5);
 }
+
 /* Buttons */
 .yellow_btn {
   border: none;
   outline: none;
-  padding: 10px;
+  padding: 10px 15px;
   font-family: inherit;
   border-radius: 7px;
   font-weight: 600;
@@ -55,6 +57,38 @@ a {
   cursor: pointer;
   background: var(--yellow-color);
 }
+.light_yellow_btn {
+  border: none;
+  outline: none;
+  background: var(--light-yellow-color);
+  padding: 8.5px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.gray_btn {
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-family: inherit;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  background: var(--bg-secondary);
+}
 .blur {
   position: fixed;
   top: 0;
@@ -62,5 +96,51 @@ a {
   right: 0;
   bottom: 0;
   background: rgb(255, 255, 255, 0.75);
-  z-index: 99;
+  z-index: 9999999;
 }
+.hover1:hover {
+  background: var(--bg-secondary);
+}
+.hover2:hover {
+  background: var(--bg-third);
+}
+.hover3:hover {
+  background: #d4d6da3a;
+}
+.card {
+  width: 500px;
+  height: 500px;
+  background: #f00;
+}
+/* -------Scrollbar--------- */
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #aeaeafa1;
+  border-radius: 5px;
+}
+/* -------Scrollbar--------- */
+/* ----------Circle------------ */
+.small_circle {
+  position: relative;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 11px;
+  background: var(--bg-third);
+  cursor: pointer;
+}
+/* ----------Circle------------ */
+/* Filter  */
+.filter_yellow {
+  filter: invert(67%) sepia(89%) saturate(1552%) hue-rotate(357deg)
+    brightness(101%) contrast(108%);
+}
+.invert {
+  filter: invert(100%);
+}
+/* Filter  */

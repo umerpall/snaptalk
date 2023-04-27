@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+const { ObjectId } = mongoose.Schema;
 const userSchema = mongoose.Schema(
   {
     first_name: {
@@ -62,35 +63,45 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    friends: {
-      type: Array,
-      default: [],
-    },
-    followings: {
-      type: Array,
-      default: [],
-    },
-    followers: {
-      type: Array,
-      default: [],
-    },
-    requests: {
-      type: Array,
-      default: [],
-    },
+    friends: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
+    following: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
+    followers: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
+    requests: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
     search: [
       {
         user: {
-          type: mongoose.Schema.ObjectId,
+          type: ObjectId,
           ref: "User",
+          required: true,
+        },
+        createdAt: {
+          type: Date,
+          required: true,
         },
       },
     ],
     details: {
       bio: {
-        type: String,
-      },
-      otherName: {
         type: String,
       },
       job: {
@@ -113,27 +124,24 @@ const userSchema = mongoose.Schema(
       },
       relationship: {
         type: String,
-        enum: ["Single", "In a relationship", "Married", "Divorced"],
-      },
-      instagram: {
-        type: String,
+        enum: ["Single", "Married", "Divorced"],
       },
     },
     savedPosts: [
       {
         post: {
-          type: mongoose.Schema.ObjectId,
+          type: ObjectId,
           ref: "Post",
         },
         savedAt: {
           type: Date,
-          default: new Date(),
+          required: true,
         },
       },
     ],
   },
   {
-    timeStamps: true,
+    timestamps: true,
   }
 );
 

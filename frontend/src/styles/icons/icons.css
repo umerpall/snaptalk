@@ -342,13 +342,14 @@
   display: inline-block;
 }
 .delete_icon {
-  background-image: url("../../../public/icons/icons1.png");
-  background-position: 0px -399px;
+  background-image: url("../../../public/icons/delete_icon.png");
+  /* background-position: 0px -399px; */
   background-size: auto;
   width: 20px;
   height: 20px;
   background-repeat: no-repeat;
   display: inline-block;
+  background-size: contain;
 }
 
 .date_icon {
@@ -679,9 +680,8 @@
   height: 32px;
   background-repeat: no-repeat;
   display: inline-block;
-  -webkit-filter: invert(39%) sepia(57%) saturate(200%) saturate(200%)
-    saturate(200%) saturate(200%) saturate(200%) saturate(147.75%)
-    hue-rotate(202deg) brightness(97%) contrast(96%);
+  -webkit-filter: invert(67%) sepia(89%) saturate(1552%) hue-rotate(357deg)
+    brightness(101%) contrast(108%);
 }
 .equalize_icon {
   background-image: url(../../../public/icons/icons26.png);
@@ -740,6 +740,15 @@
 }
 .error_icon {
   background-image: url(../../../public/icons/icons10.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+}
+.friends_home_icon {
+  background-image: url(../../../public/icons/icons40.png);
+  background-position: 0px -423px;
   background-size: auto;
   background-repeat: no-repeat;
   display: inline-block;

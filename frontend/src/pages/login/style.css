@@ -1,9 +1,18 @@
+.login {
+  height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg-secondary);
+}
 .login_wrapper {
+  height: 100%;
   background: var(--bg-secondary);
 }
 .login_wrap {
   height: 80vh;
   color: var(--color-primary);
+}
+.login::-webkit-scrollbar {
+  display: none;
 }
 .login_1 {
   width: 300px;
@@ -58,7 +67,6 @@
   background: var(--green-color);
   width: 70% !important;
   font-weight: 600 !important;
-  margin-top: 1rem;
 }
 .sign_extra {
   font-size: 15px;
@@ -76,7 +84,10 @@
   padding: 15px;
   color: var(--color-primary);
   width: 350px;
-  height: fit-content;
+  height: 580px;
+}
+.register::-webkit-scrollbar {
+  display: none;
 }
 .register_header {
   position: relative;
@@ -170,6 +181,23 @@
   align-items: center;
   margin: 20px 0 10px 0;
 }
+/* DOB & Gender Errors */
+.reg_grid .input_error {
+  width: 300px;
+  position: absolute;
+  top: 70px;
+}
+.input_error_select_large {
+  left: -97%;
+  top: 12px !important;
+}
+/* Error & Success Texts */
+.error_text {
+  color: #b94a48;
+}
+.success_text {
+  color: var(--green-color);
+}
 /* Footer */
 .footer_wrap {
   height: 20vh;
@@ -189,6 +217,21 @@
 @media (min-width: 540px) {
   .login_footer_wrap {
     max-width: 520px;
+  }
+  .register {
+    width: 400px;
+  }
+  .reg_line {
+    flex-direction: row;
+  }
+  .reg_grid select,
+  .reg_grid label {
+    width: 110px;
+  }
+  .reg_grid .input_error {
+    width: 350px;
+    position: absolute;
+    top: 70px;
   }
 }
 @media (min-width: 650px) {
@@ -224,5 +267,10 @@
   }
   .login_footer_wrap {
     max-width: 800px;
+  }
+}
+@media (max-width: 1169px) {
+  .register {
+    overflow-y: auto;
   }
 }

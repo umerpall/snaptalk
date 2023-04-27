@@ -24,5 +24,5 @@ exports.validateUsername = async (username) => {
       a = false;
     }
   } while (a);
-  return username;
+  return username.toLowerCase();
 };

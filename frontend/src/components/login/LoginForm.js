@@ -3,13 +3,21 @@ import * as Yup from "yup";
 import { LoginInput } from "../../components/inputs/loginInput";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SyncLoader from "react-spinners/SyncLoader";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const loginInfos = {
   email: "",
   password: "",
 };
 
-export const LoginForm = () => {
+export const LoginForm = ({ setVisible }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [login, setLogin] = useState(loginInfos);
   const { email, password } = login;
 
@@ -24,6 +32,30 @@ export const LoginForm = () => {
       .email("Must be a valid email"),
     password: Yup.string().required("Password is required"),
   });
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const loginSubmit = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/login`,
+        {
+          email,
+          password,
+        }
+      );
+      const { message, ...rest } = data;
+      dispatch({ type: "LOGIN", payload: rest });
+      Cookies.set("user", JSON.stringify(rest));
+      navigate("/");
+    } catch (error) {
+      setLoading(false);
+      setError(error.response.data.message);
+    }
+  };
   return (
     <div className="login_wrap">
       <div className="login_1">
@@ -39,6 +71,9 @@ export const LoginForm = () => {
               password,
             }}
             validationSchema={loginValidation}
+            onSubmit={() => {
+              loginSubmit();
+            }}
           >
             {(formik) => (
               <Form>
@@ -61,16 +96,19 @@ export const LoginForm = () => {
               </Form>
             )}
           </Formik>
-          <Link to="/forgot" className="forgot_password">
+          <Link to="/reset" className="forgot_password">
             Forgotten Password?
           </Link>
+          <SyncLoader color="#1876f2" loading={loading} size={7} />
+          {error && <div className="error_text">{error}</div>}
           <div className="sign_splitter"></div>
-          <button className="yellow_btn open_signup">Create Account</button>
+          <button
+            className="yellow_btn open_signup"
+            onClick={() => setVisible(true)}
+          >
+            Create Account
+          </button>
         </div>
-        <Link to="/" className="sign_extra">
-          <b>Create a page </b>
-          for a celebrity, brand or business.
-        </Link>
       </div>
     </div>
   );
